@@ -3,6 +3,8 @@ import { Button } from "./components/ui/button";
 import { Card, CardContent } from "./components/ui/card";
 import { Badge } from "./components/ui/badge";
 import { Github, Linkedin, Mail, MapPin, Code2, Palette, Zap, Phone, Globe } from "lucide-react";
+import { motion } from "motion/react";
+import manojPhoto from "../assets/manoj_photo.png";
 
 export default function App() {
   const projects = [
@@ -97,29 +99,62 @@ export default function App() {
       {/* Hero Section */}
       <section className="container mx-auto px-4 py-20 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-pink-50 to-blue-50 opacity-50 -z-10"></div>
-        <div className="max-w-3xl relative">
-          <div className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full">
-            <span className="text-white text-sm">Available for Internship</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl mb-6">
-            Hi, I'm <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">Manoj R</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-            UI/UX Designer & Full-Stack Developer
-          </p>
-          <p className="text-lg text-muted-foreground mb-8">
-            Highly motivated student seeking an Internship in UI/UX Design or Full-Stack Development. 
-            Proven foundational experience in MERN and Generative AI applications. Proficient in leveraging 
-            design tools like Figma to create user-centric, responsive digital experiences.
-          </p>
-          <div className="flex gap-4">
-            <Button size="lg" asChild className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
-              <a href="#contact">Get In Touch</a>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="border-purple-600 text-purple-600 hover:bg-purple-50">
-              <a href="#projects">View Projects</a>
-            </Button>
-          </div>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-2xl"
+          >
+            <div className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full">
+              <span className="text-white text-sm font-medium">Available for Internship</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl mb-6 font-bold leading-tight">
+              Hi, I'm <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">Manoj R</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-medium">
+              UI/UX Designer & Full-Stack Developer
+            </p>
+            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+              Highly motivated student seeking an Internship in UI/UX Design or Full-Stack Development. 
+              Proven foundational experience in MERN and Generative AI applications. Proficient in leveraging 
+              design tools like Figma to create user-centric, responsive digital experiences.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Button size="lg" asChild className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg shadow-purple-200">
+                <a href="#contact">Get In Touch</a>
+              </Button>
+              <Button size="lg" variant="outline" asChild className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 transition-all">
+                <a href="#projects">View Projects</a>
+              </Button>
+            </div>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative hidden lg:block"
+          >
+            {/* Decorative elements */}
+            <div className="absolute -top-10 -left-10 w-32 h-32 bg-purple-300/30 blur-3xl rounded-full animate-pulse"></div>
+            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-pink-300/30 blur-3xl rounded-full animate-pulse delay-700"></div>
+            
+            <div className="relative z-10 p-2 bg-white/40 backdrop-blur-md rounded-3xl border border-white/60 shadow-2xl overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <img 
+                src={manojPhoto} 
+                alt="Manoj R" 
+                className="w-[400px] h-[500px] object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/80 backdrop-blur-lg rounded-2xl border border-white/60 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 shadow-xl">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
+                  <span className="text-sm font-semibold text-gray-800">Based in Tamil Nadu, India</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -127,41 +162,58 @@ export default function App() {
       <section id="about" className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 -z-10"></div>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl mb-12 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">About Me</h2>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl mb-12 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent font-bold"
+          >
+            About Me
+          </motion.h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="border-2 border-purple-200 hover:border-purple-400 transition-all hover:shadow-xl hover:shadow-purple-100">
-              <CardContent className="pt-6">
-                <div className="bg-gradient-to-br from-purple-500 to-purple-700 p-3 rounded-xl inline-block mb-4">
-                  <Code2 className="size-12 text-white" />
-                </div>
-                <h3 className="text-xl mb-2">Full-Stack Development</h3>
-                <p className="text-muted-foreground">
-                  Building scalable web applications using MERN stack with RESTful APIs and modern best practices.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-2 border-pink-200 hover:border-pink-400 transition-all hover:shadow-xl hover:shadow-pink-100">
-              <CardContent className="pt-6">
-                <div className="bg-gradient-to-br from-pink-500 to-pink-700 p-3 rounded-xl inline-block mb-4">
-                  <Palette className="size-12 text-white" />
-                </div>
-                <h3 className="text-xl mb-2">UI/UX Design</h3>
-                <p className="text-muted-foreground">
-                  Creating user-centric, responsive interfaces with Figma, focusing on optimal user experience.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="border-2 border-blue-200 hover:border-blue-400 transition-all hover:shadow-xl hover:shadow-blue-100">
-              <CardContent className="pt-6">
-                <div className="bg-gradient-to-br from-blue-500 to-blue-700 p-3 rounded-xl inline-block mb-4">
-                  <Zap className="size-12 text-white" />
-                </div>
-                <h3 className="text-xl mb-2">Generative AI</h3>
-                <p className="text-muted-foreground">
-                  Exploring AI solutions with LLMs, ethical deployment, and innovative use cases in cloud environments.
-                </p>
-              </CardContent>
-            </Card>
+            {[
+              { 
+                icon: <Code2 className="size-12 text-white" />, 
+                title: "Full-Stack Development", 
+                desc: "Building scalable web applications using MERN stack with RESTful APIs and modern best practices.",
+                color: "from-purple-500 to-purple-700",
+                border: "border-purple-200 hover:border-purple-400 shadow-purple-100"
+              },
+              { 
+                icon: <Palette className="size-12 text-white" />, 
+                title: "UI/UX Design", 
+                desc: "Creating user-centric, responsive interfaces with Figma, focusing on optimal user experience.",
+                color: "from-pink-500 to-pink-700",
+                border: "border-pink-200 hover:border-pink-400 shadow-pink-100"
+              },
+              { 
+                icon: <Zap className="size-12 text-white" />, 
+                title: "Generative AI", 
+                desc: "Exploring AI solutions with LLMs, ethical deployment, and innovative use cases in cloud environments.",
+                color: "from-blue-500 to-blue-700",
+                border: "border-blue-200 hover:border-blue-400 shadow-blue-100"
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+              >
+                <Card className={`border-2 ${item.border} transition-all hover:shadow-xl hover:shadow-${item.border.split(' ')[2]}`}>
+                  <CardContent className="pt-6">
+                    <div className={`bg-gradient-to-br ${item.color} p-3 rounded-xl inline-block mb-4 shadow-lg`}>
+                      {item.icon}
+                    </div>
+                    <h3 className="text-xl mb-2 font-bold">{item.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
           <div className="mt-12 max-w-3xl">
             <h3 className="text-2xl mb-4">Education</h3>
