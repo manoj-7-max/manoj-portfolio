@@ -2,366 +2,326 @@ import { ProjectCard } from "./components/ProjectCard";
 import { Button } from "./components/ui/button";
 import { Card, CardContent } from "./components/ui/card";
 import { Badge } from "./components/ui/badge";
-import { Github, Linkedin, Mail, MapPin, Code2, Palette, Zap, Phone, Globe } from "lucide-react";
-import { motion } from "motion/react";
+import { Github, Linkedin, Mail, MapPin, Code2, Palette, Zap, Phone, Globe, ExternalLink, ArrowRight, MousePointer2 } from "lucide-react";
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "motion/react";
 import manojPhoto from "../assets/manoj_photo.png";
+import { useState, useRef, useEffect } from "react";
 
 export default function App() {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   const projects = [
     {
-      title: "NEXUS GO - Travel Booking & Location Tracking",
-      description: "Integrated travel booking platform with location tracking. Designed UI/UX using Figma with high fidelity prototypes and wireframes. Optimized booking flow to reduce user clicks by 25%.",
-      image: "https://images.unsplash.com/photo-1759460336001-0a8cce4e5c95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cmF2ZWwlMjBib29raW5nJTIwYXBwfGVufDF8fHx8MTc2Mzk5NzAxMXww&ixlib=rb-4.1.0&q=80&w=1080",
-      tags: ["UI/UX Design", "Figma", "Prototyping", "Wireframing", "Design System"],
+      title: "NEXUS GO - Travel Booking",
+      description: "Integrated travel booking platform with location tracking. Designed UI/UX using Figma with high fidelity prototypes. Optimized booking flow to reduce user clicks by 25%.",
+      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2021&auto=format&fit=crop",
+      tags: ["UI/UX Design", "Figma", "Prototyping"],
     },
     {
       title: "Generative AI Research",
-      description: "Researched ethical AI deployment in Oracle Cloud environments. Explored Gen AI use cases including content creation, code generation, and data analysis.",
-      image: "https://images.unsplash.com/photo-1697577418970-95d99b5a55cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcnRpZmljaWFsJTIwaW50ZWxsaWdlbmNlJTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NjM5Njc2NTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      tags: ["Generative AI", "LLMs", "Oracle Cloud", "Research"],
+      description: "Researched ethical AI deployment in Oracle Cloud. Explored Gen AI use cases including content creation, code generation, and data analysis.",
+      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop",
+      tags: ["Gen AI", "LLMs", "Oracle Cloud"],
     },
     {
       title: "MERN Stack Development",
-      description: "Full-stack web applications using MongoDB, Express.js, React.js, and Node.js. Designed and tested RESTful API endpoints with focus on UI responsiveness and user experience.",
-      image: "https://images.unsplash.com/photo-1643116774075-acc00caa9a7b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMGNvZGV8ZW58MXx8fHwxNzYzOTg3NTgyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      tags: ["React", "Node.js", "MongoDB", "Express.js", "RESTful APIs"],
+      description: "Full-stack web applications using MongoDB, Express.js, React.js, and Node.js. Designed and tested RESTful API endpoints.",
+      image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop",
+      tags: ["React", "Node.js", "MongoDB"],
     },
   ];
 
   const skills = [
-    "React.js",
-    "Node.js",
-    "MongoDB",
-    "Express.js",
-    "HTML5",
-    "CSS3",
-    "JavaScript",
-    "RESTful APIs",
-    "Figma",
-    "UI/UX Design",
-    "Responsive Design",
-    "Git/GitHub",
-    "Python",
-    "C/C++",
-    "Generative AI",
-    "LLMs",
+    "React.js", "Node.js", "MongoDB", "Express.js", "HTML5", "CSS3", "JavaScript", 
+    "RESTful APIs", "Figma", "UI/UX Design", "Python", "Generative AI", "LLMs"
   ];
 
   const experiences = [
     {
       title: "Generative AI Internship",
-      company: "AdroIT Technologies - Innovative Solutions Pvt LTD (Oracle Partner)",
+      company: "AdroIT Technologies (Oracle Partner)",
       period: "October 2025",
       description: [
-        "Completed research on ethical AI deployment in Oracle Cloud environments",
-        "Gained training in Generative AI principles and LLMs",
-        "Explored Gen AI use cases such as content creation, code generation, and data analysis",
+        "Research on ethical AI deployment in Oracle Cloud environments",
+        "Training in Generative AI principles and LLMs",
+        "Explored Gen AI use cases for content and code generation",
       ],
     },
     {
       title: "Full-Stack Developer Intern",
       company: "VEI Technologies",
-      period: "February 2025 – March 2025",
+      period: "Feb 2025 – March 2025",
       description: [
-        "Assisted in designing and testing 5 RESTful API endpoints using Node.js/Express.js",
-        "Contributed to MERN-based feature development with focus on UI and responsiveness",
-        "Collaborated via Git/GitHub for commits, merges, and version control",
+        "Designed and tested 5 RESTful API endpoints using Node.js",
+        "Contributed to MERN-based feature development",
+        "Collaborated via Git/GitHub for version control",
       ],
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#030014] text-white selection:bg-purple-500/30 overflow-x-hidden" ref={containerRef}>
+      {/* Background Effects */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,#3b0764,transparent_50%)]"></div>
+        <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_120%,#1e1b4b,transparent_50%)]"></div>
+        
+        {/* Animated Orbs */}
+        <motion.div 
+          animate={{
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          className="absolute top-[20%] left-[10%] w-64 h-64 bg-purple-600/10 blur-[120px] rounded-full"
+        />
+        <motion.div 
+          animate={{
+            x: [0, -40, 0],
+            y: [0, 60, 0],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-[20%] right-[10%] w-96 h-96 bg-blue-600/10 blur-[150px] rounded-full"
+        />
+      </div>
+
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <span className="text-xl bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Manoj R</span>
-          <div className="flex gap-6">
-            <a href="#about" className="hover:text-primary transition-colors">
-              About
-            </a>
-            <a href="#experience" className="hover:text-primary transition-colors">
-              Experience
-            </a>
-            <a href="#projects" className="hover:text-primary transition-colors">
-              Projects
-            </a>
-            <a href="#skills" className="hover:text-primary transition-colors">
-              Skills
-            </a>
-            <a href="#contact" className="hover:text-primary transition-colors">
-              Contact
-            </a>
+      <nav className="fixed top-0 w-full z-[100] border-b border-white/5 bg-black/20 backdrop-blur-xl">
+        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+          <motion.span 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent"
+          >
+            MANOJ R
+          </motion.span>
+          <div className="hidden md:flex gap-8 items-center text-sm font-medium text-gray-400">
+            {["About", "Experience", "Projects", "Skills", "Contact"].map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`} className="hover:text-white transition-colors">
+                {item}
+              </a>
+            ))}
+            <Button variant="outline" className="border-purple-500/50 text-white hover:bg-purple-500/10 h-9 px-4 rounded-full">
+              Resume
+            </Button>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-100 via-pink-50 to-blue-50 opacity-50 -z-10"></div>
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12 relative">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-2xl"
+      <section className="relative min-h-screen flex items-center pt-20 px-6 overflow-hidden">
+        <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            <div className="inline-block mb-4 px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full">
-              <span className="text-white text-sm font-medium">Available for Internship</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl mb-6 font-bold leading-tight">
-              Hi, I'm <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">Manoj R</span>
+            <motion.div 
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-semibold mb-6"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+              </span>
+              Available for Internships
+            </motion.div>
+            
+            <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight leading-[0.9]">
+              FUTURE <br />
+              <span className="bg-gradient-to-r from-white via-white to-purple-400 bg-clip-text text-transparent">ENGINEERING</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 font-medium">
-              UI/UX Designer & Full-Stack Developer
+            
+            <p className="text-xl md:text-2xl text-gray-400 max-w-xl mb-10 leading-relaxed font-light">
+              Hi, I'm <span className="text-white font-semibold">Manoj R</span>. 
+              I design and build next-generation digital experiences specializing in 
+              <span className="text-purple-400"> UI/UX</span> and <span className="text-blue-400">Full-Stack Development</span>.
             </p>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Highly motivated student seeking an Internship in UI/UX Design or Full-Stack Development. 
-              Proven foundational experience in MERN and Generative AI applications. Proficient in leveraging 
-              design tools like Figma to create user-centric, responsive digital experiences.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button size="lg" asChild className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg shadow-purple-200">
-                <a href="#contact">Get In Touch</a>
+
+            <div className="flex flex-wrap gap-5">
+              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-8 rounded-full h-14 text-lg shadow-[0_0_20px_rgba(147,51,234,0.3)] group">
+                Work with me
+                <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button size="lg" variant="outline" asChild className="border-2 border-purple-600 text-purple-600 hover:bg-purple-50 transition-all">
-                <a href="#projects">View Projects</a>
+              <Button size="lg" variant="ghost" className="text-white hover:bg-white/5 px-8 rounded-full h-14 text-lg border border-white/10">
+                View Portfolio
               </Button>
             </div>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative hidden lg:block"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="relative perspective-1000"
           >
-            {/* Decorative elements */}
-            <div className="absolute -top-10 -left-10 w-32 h-32 bg-purple-300/30 blur-3xl rounded-full animate-pulse"></div>
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-pink-300/30 blur-3xl rounded-full animate-pulse delay-700"></div>
-            
-            <div className="relative z-10 p-2 bg-white/40 backdrop-blur-md rounded-3xl border border-white/60 shadow-2xl overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <motion.div
+              style={{
+                rotateX: (mousePosition.y - window.innerHeight / 2) / 50,
+                rotateY: -(mousePosition.x - window.innerWidth / 2) / 50,
+              }}
+              className="relative z-20 w-full max-w-[500px] aspect-[4/5] mx-auto rounded-[40px] overflow-hidden border border-white/20 shadow-2xl preserve-3d"
+            >
               <img 
                 src={manojPhoto} 
                 alt="Manoj R" 
-                className="w-[400px] h-[500px] object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700 scale-105"
               />
-              <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/80 backdrop-blur-lg rounded-2xl border border-white/60 transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 shadow-xl">
-                <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-ping"></div>
-                  <span className="text-sm font-semibold text-gray-800">Based in Tamil Nadu, India</span>
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+              <div className="absolute bottom-8 left-8">
+                <p className="text-3xl font-bold">Manoj R</p>
+                <p className="text-purple-400 font-medium">Full-Stack Developer & UI/UX Designer</p>
               </div>
-            </div>
+            </motion.div>
+            
+            {/* 3D Decorative Cards */}
+            <motion.div 
+              style={{
+                x: (mousePosition.x - window.innerWidth / 2) / 20,
+                y: (mousePosition.y - window.innerHeight / 2) / 20,
+              }}
+              className="absolute -top-10 -right-10 z-30 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hidden md:block"
+            >
+              <Code2 className="size-10 text-blue-400" />
+            </motion.div>
+            <motion.div 
+              style={{
+                x: -(mousePosition.x - window.innerWidth / 2) / 25,
+                y: -(mousePosition.y - window.innerHeight / 2) / 25,
+              }}
+              className="absolute -bottom-10 -left-10 z-30 p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 shadow-xl hidden md:block"
+            >
+              <Palette className="size-10 text-pink-400" />
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 -z-10"></div>
-        <div className="container mx-auto px-4">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+      <section id="about" className="py-32 relative">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl mb-12 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent font-bold"
+            className="text-center mb-20"
           >
-            About Me
-          </motion.h2>
-          <div className="grid md:grid-cols-3 gap-6">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4">A Bit About Me</h2>
+            <div className="w-20 h-1 bg-purple-500 mx-auto rounded-full"></div>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                icon: <Code2 className="size-12 text-white" />, 
-                title: "Full-Stack Development", 
-                desc: "Building scalable web applications using MERN stack with RESTful APIs and modern best practices.",
-                color: "from-purple-500 to-purple-700",
-                border: "border-purple-200 hover:border-purple-400 shadow-purple-100"
-              },
-              { 
-                icon: <Palette className="size-12 text-white" />, 
-                title: "UI/UX Design", 
-                desc: "Creating user-centric, responsive interfaces with Figma, focusing on optimal user experience.",
-                color: "from-pink-500 to-pink-700",
-                border: "border-pink-200 hover:border-pink-400 shadow-pink-100"
-              },
-              { 
-                icon: <Zap className="size-12 text-white" />, 
-                title: "Generative AI", 
-                desc: "Exploring AI solutions with LLMs, ethical deployment, and innovative use cases in cloud environments.",
-                color: "from-blue-500 to-blue-700",
-                border: "border-blue-200 hover:border-blue-400 shadow-blue-100"
-              }
-            ].map((item, index) => (
+              { icon: <Code2 />, title: "Full Stack", color: "blue", desc: "Crafting robust backends and dynamic frontends using MERN." },
+              { icon: <Palette />, title: "UI/UX Design", color: "purple", desc: "User-centric design systems built with precision in Figma." },
+              { icon: <Zap />, title: "Gen AI", color: "pink", desc: "Implementing cutting-edge LLMs and AI cloud solutions." },
+            ].map((item, i) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
+                transition={{ delay: i * 0.2 }}
+                className="group relative p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/[0.07] hover:border-purple-500/50 transition-all preserve-3d"
               >
-                <Card className={`border-2 ${item.border} transition-all hover:shadow-xl hover:shadow-${item.border.split(' ')[2]}`}>
-                  <CardContent className="pt-6">
-                    <div className={`bg-gradient-to-br ${item.color} p-3 rounded-xl inline-block mb-4 shadow-lg`}>
-                      {item.icon}
-                    </div>
-                    <h3 className="text-xl mb-2 font-bold">{item.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </CardContent>
-                </Card>
+                <div className={`p-4 rounded-2xl bg-${item.color}-500/10 text-${item.color}-400 inline-block mb-6`}>
+                  {item.icon}
+                </div>
+                <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{item.desc}</p>
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl -z-10"></div>
               </motion.div>
-            ))}
-          </div>
-          <div className="mt-12 max-w-3xl">
-            <h3 className="text-2xl mb-4">Education</h3>
-            <Card className="border-2 border-green-200 hover:border-green-400 transition-all">
-              <CardContent className="pt-6">
-                <h4 className="text-lg mb-2">Bachelor of Engineering (B.E.) in Computer Science</h4>
-                <p className="text-muted-foreground mb-2">Karpaga Vinayaga College of Engineering and Technology, Chengalpattu, Tamil Nadu</p>
-                <p className="text-sm text-muted-foreground mb-4">Expected May 2027</p>
-                <p className="text-sm text-muted-foreground">
-                  Relevant Coursework: Web Development, Database Management, Data Structures, UI/UX Design, Full Stack Development
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section id="experience" className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-teal-50 to-cyan-50 -z-10"></div>
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl mb-12 bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent">Experience</h2>
-          <div className="space-y-6 max-w-4xl">
-            {experiences.map((exp, index) => (
-              <Card key={index} className="border-2 border-teal-200 hover:border-teal-400 transition-all hover:shadow-xl hover:shadow-teal-100">
-                <CardContent className="pt-6">
-                  <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
-                    <div>
-                      <h3 className="text-xl mb-1">{exp.title}</h3>
-                      <p className="text-muted-foreground">{exp.company}</p>
-                    </div>
-                    <Badge variant="outline" className="mt-2 md:mt-0 border-teal-500 text-teal-700 bg-teal-50">
-                      {exp.period}
-                    </Badge>
-                  </div>
-                  <ul className="space-y-2">
-                    {exp.description.map((item, i) => (
-                      <li key={i} className="text-muted-foreground flex gap-2">
-                        <span className="text-teal-600 mt-1">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
             ))}
           </div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 -z-10"></div>
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl mb-12 bg-gradient-to-r from-orange-600 to-amber-600 bg-clip-text text-transparent">Featured Projects</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
-              <ProjectCard key={project.title} {...project} />
+      <section id="projects" className="py-32 bg-white/5 backdrop-blur-sm">
+        <div className="container mx-auto px-6">
+          <div className="flex justify-between items-end mb-16">
+            <div>
+              <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white">Selected Works</h2>
+              <p className="text-gray-400">Explore my latest projects and research</p>
+            </div>
+            <Button variant="link" className="text-purple-400 hover:text-purple-300 text-lg group">
+              View all
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <ProjectCard {...project} />
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-violet-50 to-purple-50 -z-10"></div>
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl mb-12 bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">Skills & Technologies</h2>
-          <div className="flex flex-wrap gap-3">
-            {skills.map((skill, index) => {
-              const colors = [
-                "bg-gradient-to-r from-blue-500 to-cyan-500",
-                "bg-gradient-to-r from-purple-500 to-pink-500",
-                "bg-gradient-to-r from-green-500 to-teal-500",
-                "bg-gradient-to-r from-orange-500 to-red-500",
-                "bg-gradient-to-r from-indigo-500 to-purple-500",
-                "bg-gradient-to-r from-pink-500 to-rose-500",
-              ];
-              const colorClass = colors[index % colors.length];
-              return (
-                <Badge key={skill} className={`px-4 py-2 text-base ${colorClass} text-white border-0 hover:scale-105 transition-transform`}>
-                  {skill}
-                </Badge>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
-      <section id="contact" className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-rose-50 via-fuchsia-50 to-purple-50 -z-10"></div>
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl mb-12 bg-gradient-to-r from-rose-600 to-purple-600 bg-clip-text text-transparent">Get In Touch</h2>
-          <div className="max-w-2xl">
-            <p className="text-lg text-muted-foreground mb-8">
-              I'm actively seeking internship opportunities in UI/UX Design or Full-Stack Development. 
-              Feel free to reach out if you'd like to discuss potential opportunities or collaborate on projects!
+      <section id="contact" className="py-32 relative">
+        <div className="container mx-auto px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto p-12 md:p-20 rounded-[50px] bg-gradient-to-b from-purple-600/20 to-blue-600/10 border border-white/10 backdrop-blur-md relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-5"></div>
+            <h2 className="text-5xl md:text-7xl font-black mb-8 leading-[0.9]">READY TO START <br /> A PROJECT?</h2>
+            <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+              Currently open for internships and freelance collaborations. 
+              Let's build something exceptional together.
             </p>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 p-4 bg-white rounded-lg border-2 border-purple-200 hover:border-purple-400 transition-all">
-                <div className="bg-gradient-to-br from-purple-500 to-purple-700 p-2 rounded-lg">
-                  <Mail className="size-5 text-white" />
-                </div>
-                <a href="mailto:manojr9043@gmail.com" className="hover:text-primary transition-colors">
-                  manojr9043@gmail.com
-                </a>
-              </div>
-              <div className="flex items-center gap-3 p-4 bg-white rounded-lg border-2 border-pink-200 hover:border-pink-400 transition-all">
-                <div className="bg-gradient-to-br from-pink-500 to-pink-700 p-2 rounded-lg">
-                  <Phone className="size-5 text-white" />
-                </div>
-                <a href="tel:+919944305980" className="hover:text-primary transition-colors">
-                  +91 9944305980
-                </a>
-              </div>
-              <div className="flex items-center gap-3 p-4 bg-white rounded-lg border-2 border-blue-200 hover:border-blue-400 transition-all">
-                <div className="bg-gradient-to-br from-blue-500 to-blue-700 p-2 rounded-lg">
-                  <MapPin className="size-5 text-white" />
-                </div>
-                <span>Chengalpattu, Tamil Nadu, India</span>
-              </div>
-              <div className="flex gap-4 mt-6">
-                <Button variant="outline" size="icon" asChild className="border-2 border-purple-500 text-purple-600 hover:bg-purple-50">
-                  <a href="https://github.com/manoj-7-max" target="_blank" rel="noopener noreferrer">
-                    <Github className="size-5" />
-                  </a>
-                </Button>
-                <Button variant="outline" size="icon" asChild className="border-2 border-blue-500 text-blue-600 hover:bg-blue-50">
-                  <a href="https://linkedin.com/in/manojrajkumar07" target="_blank" rel="noopener noreferrer">
-                    <Linkedin className="size-5" />
-                  </a>
-                </Button>
-                <Button variant="outline" size="icon" asChild className="border-2 border-green-500 text-green-600 hover:bg-green-50">
-                  <a href="https://manojsecuritysolutions.in/" target="_blank" rel="noopener noreferrer">
-                    <Globe className="size-5" />
-                  </a>
-                </Button>
+            <div className="flex flex-wrap justify-center gap-6">
+              <Button size="lg" className="bg-white text-black hover:bg-gray-200 px-10 rounded-full h-16 text-xl font-bold transition-transform hover:scale-105 active:scale-95">
+                Email Me
+              </Button>
+              <div className="flex gap-4 items-center">
+                {[Github, Linkedin, Globe].map((Icon, i) => (
+                  <motion.a
+                    key={i}
+                    whileHover={{ y: -5, scale: 1.1 }}
+                    href="#"
+                    className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white"
+                  >
+                    <Icon className="size-6" />
+                  </motion.a>
+                ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-8 bg-gradient-to-r from-purple-600 to-pink-600">
-        <div className="container mx-auto px-4 text-center text-white">
-          <p>© 2025 Manoj R. All rights reserved.</p>
+      <footer className="py-12 border-t border-white/5">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-500 text-sm">
+          <p>© 2025 MANOJ R. ALL RIGHTS RESERVED.</p>
+          <div className="flex gap-10">
+            <a href="#" className="hover:text-white">TWITTER</a>
+            <a href="#" className="hover:text-white">LINKEDIN</a>
+            <a href="#" className="hover:text-white">DRIBBBLE</a>
+          </div>
         </div>
       </footer>
     </div>
