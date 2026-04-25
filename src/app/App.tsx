@@ -110,8 +110,8 @@ export default function App() {
                 {item}
               </a>
             ))}
-            <Button variant="outline" className="border-purple-500/50 text-white hover:bg-purple-500/10 h-9 px-4 rounded-full">
-              Resume
+            <Button variant="outline" asChild className="border-purple-500/50 text-white hover:bg-purple-500/10 h-9 px-4 rounded-full">
+              <a href="https://www.linkedin.com/in/manoj-rajkumar07/" target="_blank" rel="noopener noreferrer">Resume</a>
             </Button>
           </div>
         </div>
@@ -150,12 +150,14 @@ export default function App() {
             </p>
 
             <div className="flex flex-wrap gap-5">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white px-8 rounded-full h-14 text-lg shadow-[0_0_20px_rgba(147,51,234,0.3)] group">
-                Work with me
-                <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
+              <Button size="lg" asChild className="bg-purple-600 hover:bg-purple-700 text-white px-8 rounded-full h-14 text-lg shadow-[0_0_20px_rgba(147,51,234,0.3)] group">
+                <a href="#contact">
+                  Work with me
+                  <ArrowRight className="ml-2 size-5 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
-              <Button size="lg" variant="ghost" className="text-white hover:bg-white/5 px-8 rounded-full h-14 text-lg border border-white/10">
-                View Portfolio
+              <Button size="lg" variant="ghost" asChild className="text-white hover:bg-white/5 px-8 rounded-full h-14 text-lg border border-white/10">
+                <a href="#projects">View Portfolio</a>
               </Button>
             </div>
           </motion.div>
@@ -255,9 +257,11 @@ export default function App() {
               <h2 className="text-4xl md:text-6xl font-bold mb-4 text-white">Selected Works</h2>
               <p className="text-gray-400">Explore my latest projects and research</p>
             </div>
-            <Button variant="link" className="text-purple-400 hover:text-purple-300 text-lg group">
-              View all
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            <Button variant="link" asChild className="text-purple-400 hover:text-purple-300 text-lg group">
+              <a href="https://github.com/manoj-7-max/" target="_blank" rel="noopener noreferrer">
+                View all on GitHub
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
           </div>
 
@@ -293,20 +297,37 @@ export default function App() {
               Let's build something exceptional together.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
-              <Button size="lg" className="bg-white text-black hover:bg-gray-200 px-10 rounded-full h-16 text-xl font-bold transition-transform hover:scale-105 active:scale-95">
-                Email Me
+              <Button size="lg" asChild className="bg-white text-black hover:bg-gray-200 px-10 rounded-full h-16 text-xl font-bold transition-transform hover:scale-105 active:scale-95">
+                <a href="mailto:manojr9043@gmail.com">Email Me</a>
               </Button>
               <div className="flex gap-4 items-center">
-                {[Github, Linkedin, Globe].map((Icon, i) => (
-                  <motion.a
-                    key={i}
-                    whileHover={{ y: -5, scale: 1.1 }}
-                    href="#"
-                    className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white"
-                  >
-                    <Icon className="size-6" />
-                  </motion.a>
-                ))}
+                <motion.a
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  href="https://github.com/manoj-7-max/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white"
+                >
+                  <Github className="size-6" />
+                </motion.a>
+                <motion.a
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  href="https://www.linkedin.com/in/manoj-rajkumar07/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white"
+                >
+                  <Linkedin className="size-6" />
+                </motion.a>
+                <motion.a
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  href="https://manojsecuritysolutions.in/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 text-white"
+                >
+                  <Globe className="size-6" />
+                </motion.a>
               </div>
             </div>
           </motion.div>
@@ -318,9 +339,9 @@ export default function App() {
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-500 text-sm">
           <p>© 2025 MANOJ R. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-10">
-            <a href="#" className="hover:text-white">TWITTER</a>
-            <a href="#" className="hover:text-white">LINKEDIN</a>
-            <a href="#" className="hover:text-white">DRIBBBLE</a>
+            <a href="https://github.com/manoj-7-max/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GITHUB</a>
+            <a href="https://www.linkedin.com/in/manoj-rajkumar07/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LINKEDIN</a>
+            <a href="https://manojsecuritysolutions.in/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">WEBSITE</a>
           </div>
         </div>
       </footer>
