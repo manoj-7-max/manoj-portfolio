@@ -142,15 +142,15 @@ export function Hero() {
             <div className="absolute inset-0 rounded-full blur-2xl bg-gradient-to-tr from-blue-500 via-primary to-purple-600 opacity-60"></div>
             <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background bg-muted">
               {/* Fallback avatar if no image provided yet */}
-              <div className="absolute inset-0 flex items-center justify-center bg-zinc-800 text-6xl font-bold text-zinc-600">MR</div>
-              {/* Uncomment and add actual image later */}
-              {/* <Image 
+              {/* <div className="absolute inset-0 flex items-center justify-center bg-zinc-800 text-6xl font-bold text-zinc-600">MR</div> */}
+              {/* Actual image */}
+              <Image 
                 src="/me.jpg" 
                 alt="Manoj R" 
                 fill 
                 className="object-cover"
                 priority
-              /> */}
+              />
             </div>
           </div>
         </motion.div>
