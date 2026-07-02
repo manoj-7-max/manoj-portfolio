@@ -32,13 +32,13 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground">Connect</h4>
             <div className="flex gap-4">
-              <a href="https://github.com/itsmanoj" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-all hover:scale-110">
+              <a href="https://github.com/manoj-7-max" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-all hover:scale-110">
                 <FaGithub className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com/in/itsmanoj" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-all hover:scale-110">
+              <a href="https://www.linkedin.com/in/manojrajkumar07" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-all hover:scale-110">
                 <FaLinkedin className="w-5 h-5" />
               </a>
-              <a href="https://instagram.com/itsmanoj" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-all hover:scale-110">
+              <a href="https://www.instagram.com/crazy_manoj_007?igsh=MWZqYmNycGp2c2U2cw==" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-all hover:scale-110">
                 <FaInstagram className="w-5 h-5" />
               </a>
               <a href="mailto:hello@itsmanoj.me" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-muted-foreground hover:text-white hover:bg-white/10 transition-all hover:scale-110">

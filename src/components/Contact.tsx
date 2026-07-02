@@ -102,13 +102,13 @@ export function Contact() {
             </div>
 
             <div className="pt-8 flex gap-4">
-              <a href="https://github.com/itsmanoj" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:bg-white/10 hover:text-white transition-colors">
+              <a href="https://github.com/manoj-7-max" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:bg-white/10 hover:text-white transition-colors">
                 <FaGithub className="w-5 h-5" />
               </a>
-              <a href="https://linkedin.com/in/itsmanoj" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:bg-white/10 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/in/manojrajkumar07" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:bg-white/10 hover:text-white transition-colors">
                 <FaLinkedin className="w-5 h-5" />
               </a>
-              <a href="https://instagram.com/itsmanoj" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:bg-white/10 hover:text-white transition-colors">
+              <a href="https://www.instagram.com/crazy_manoj_007?igsh=MWZqYmNycGp2c2U2cw==" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-muted-foreground hover:bg-white/10 hover:text-white transition-colors">
                 <FaInstagram className="w-5 h-5" />
               </a>
             </div>
