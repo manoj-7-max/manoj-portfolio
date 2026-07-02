@@ -56,7 +56,7 @@ export function Navbar() {
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <Link href="/" className="relative z-50 group">
           <span className="font-bold text-2xl tracking-tighter text-foreground">
-            Manoj<span className="text-primary">Raj</span>
+            Manoj <span className="text-primary">R.</span>
           </span>
           <div className="h-0.5 w-0 bg-primary group-hover:w-full transition-all duration-300 absolute -bottom-1 left-0"></div>
         </Link>
