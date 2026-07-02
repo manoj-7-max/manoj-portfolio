@@ -22,13 +22,7 @@ const featuredProjects = [
     tech: ["React", "Node.js", "PostgreSQL", "Express"],
     gradient: "from-emerald-600/20 to-teal-600/20",
   },
-  {
-    title: "SecureVision AI",
-    description: "AI-powered CCTV surveillance platform capable of integrating with multiple DVR/NVR brands for intelligent monitoring, event detection, alerts, and centralized security management.",
-    features: ["AI Detection", "Live Monitoring", "Alert System", "Multi-NVR Support", "Face Detection", "Vehicle Detection", "Analytics Dashboard"],
-    tech: ["Python", "TensorFlow", "React", "WebRTC"],
-    gradient: "from-red-600/20 to-orange-600/20",
-  },
+
   {
     title: "Restaurant Management System",
     description: "Cloud-based restaurant management software with POS, Kitchen Display, QR Ordering, Inventory, Billing, Reports, and Customer Management.",
@@ -36,13 +30,7 @@ const featuredProjects = [
     tech: ["Next.js", "Tailwind CSS", "Firebase", "Stripe"],
     gradient: "from-amber-600/20 to-yellow-600/20",
   },
-  {
-    title: "Attendance Management System",
-    description: "RFID/UHF-based attendance platform with real-time parent notifications, analytics, automated reports, and student tracking.",
-    features: ["RFID Integration", "Real-time SMS/Email", "Automated Reports", "Admin Dashboard"],
-    tech: ["IoT", "Node.js", "React", "MongoDB"],
-    gradient: "from-indigo-600/20 to-blue-600/20",
-  },
+
   {
     title: "Business Websites Portfolio",
     description: "A collection of high-performance, SEO-optimized business websites developed for various clients across different industries.",

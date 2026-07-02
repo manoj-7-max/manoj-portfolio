@@ -6,25 +6,11 @@ import { Briefcase, Calendar, ChevronRight } from "lucide-react";
 
 const experiences = [
   {
-    role: "Freelance Developer",
+    role: "Freelance Developer & Consultant",
     company: "Self-Employed",
-    period: "2020 - Present",
+    period: "2025 - Present",
     description: "Developing custom web applications, SaaS platforms, and enterprise solutions for global clients. Focused on scalable architectures and premium user experiences.",
-    highlights: ["Delivered 15+ full-stack projects", "Implemented custom AI integrations", "Maintained 100% client satisfaction"],
-  },
-  {
-    role: "AI Solution Builder",
-    company: "Tech Innovations Inc.",
-    period: "2022 - 2023",
-    description: "Architected AI-driven workflows and integrated Large Language Models into existing business processes to automate repetitive tasks.",
-    highlights: ["Reduced manual processing by 40%", "Built internal tools using Next.js & OpenAI", "Optimized database queries"],
-  },
-  {
-    role: "Software Developer",
-    company: "Startup Nexus",
-    period: "2021 - 2022",
-    description: "Core team member responsible for building the MVP of a B2B SaaS platform. Handled frontend architecture and backend API design.",
-    highlights: ["Led frontend development with React", "Designed RESTful APIs", "Set up CI/CD pipelines"],
+    highlights: ["Building full-stack projects", "Implementing custom AI integrations", "Delivering high-performance Next.js applications"],
   },
 ];
 
