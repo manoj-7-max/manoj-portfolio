@@ -4,17 +4,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Briefcase, Calendar, ChevronRight } from "lucide-react";
 
-const experiences = [
-  {
-    role: "Freelance Developer & Consultant",
-    company: "Self-Employed",
-    period: "2025 - Present",
-    description: "Developing custom web applications, SaaS platforms, and enterprise solutions for global clients. Focused on scalable architectures and premium user experiences.",
-    highlights: ["Building full-stack projects", "Implementing custom AI integrations", "Delivering high-performance Next.js applications"],
-  },
-];
+export function Experience({ experiences = [] }: { experiences?: any[] }) {
+  const displayExperiences = experiences.length > 0 ? experiences : [];
 
-export function Experience() {
   return (
     <section id="experience" className="relative py-24 md:py-32">
       <div className="container mx-auto px-4 md:px-6">
@@ -35,7 +27,7 @@ export function Experience() {
           <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-primary/50 via-primary/10 to-transparent" />
 
           <div className="space-y-12">
-            {experiences.map((exp, index) => (
+            {displayExperiences.map((exp, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}

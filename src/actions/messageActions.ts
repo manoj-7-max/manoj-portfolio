@@ -10,6 +10,13 @@ export async function getMessages() {
   return JSON.parse(JSON.stringify(messages));
 }
 
+export async function createMessage(data: { name: string; email: string; message: string }) {
+  await connectDB();
+  await Message.create(data);
+  revalidatePath("/admin/messages");
+  return { success: true };
+}
+
 export async function deleteMessage(id: string) {
   await connectDB();
   await Message.findByIdAndDelete(id);

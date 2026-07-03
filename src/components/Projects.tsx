@@ -7,40 +7,19 @@ import { ExternalLink, Layers } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import Image from "next/image";
 
-const featuredProjects = [
-  {
-    title: "ID Card Generator Pro",
-    description: "A professional Canva-like ID card generation software supporting bulk Excel import, visual editing, drag-and-drop design, direct printing, photo management, export, and enterprise licensing.",
-    features: ["Bulk Create", "Excel Import", "Visual Editor", "Direct Print", "Multiple Templates", "QR Code", "Barcode", "Licensing System"],
-    tech: ["Next.js", "Electron", "Node.js", "MongoDB"],
-    gradient: "from-blue-600/20 to-purple-600/20",
-  },
-  {
-    title: "KVCET Department ERP",
-    description: "A complete ERP platform for educational institutions with separate portals for HOD, Faculty, Students, Attendance, Circulars, Complaints, Reports, Analytics, and Administration.",
-    features: ["Multi-role Login", "Dashboard", "Attendance", "Student Management", "Faculty Portal", "Reports", "Notifications"],
-    tech: ["React", "Node.js", "PostgreSQL", "Express"],
-    gradient: "from-emerald-600/20 to-teal-600/20",
-  },
-
-  {
-    title: "Restaurant Management System",
-    description: "Cloud-based restaurant management software with POS, Kitchen Display, QR Ordering, Inventory, Billing, Reports, and Customer Management.",
-    features: ["POS System", "QR Ordering", "Inventory Tracking", "Analytics", "Role Management"],
-    tech: ["Next.js", "Tailwind CSS", "Firebase", "Stripe"],
-    gradient: "from-amber-600/20 to-yellow-600/20",
-  },
-
-  {
-    title: "Business Websites Portfolio",
-    description: "A collection of high-performance, SEO-optimized business websites developed for various clients across different industries.",
-    features: ["SEO Optimized", "Responsive Design", "CMS Integration", "Fast Loading"],
-    tech: ["Next.js", "Framer Motion", "Tailwind CSS", "Sanity CMS"],
-    gradient: "from-pink-600/20 to-rose-600/20",
-  }
+const gradients = [
+  "from-blue-600/20 to-purple-600/20",
+  "from-emerald-600/20 to-teal-600/20",
+  "from-amber-600/20 to-yellow-600/20",
+  "from-pink-600/20 to-rose-600/20",
+  "from-cyan-600/20 to-blue-600/20",
+  "from-indigo-600/20 to-purple-600/20",
 ];
 
-export function Projects() {
+export function Projects({ projects = [] }: { projects?: any[] }) {
+  // Use DB projects if available, otherwise fallback to empty array
+  const displayProjects = projects.length > 0 ? projects : [];
+
   return (
     <section id="projects" className="relative py-24 md:py-32 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
@@ -57,9 +36,18 @@ export function Projects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {featuredProjects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
-          ))}
+          {displayProjects.map((project, index) => {
+            const projectWithGradient = {
+              ...project,
+              gradient: gradients[index % gradients.length]
+            };
+            return <ProjectCard key={project._id || index} project={projectWithGradient} index={index} />;
+          })}
+          {displayProjects.length === 0 && (
+            <div className="col-span-full text-center text-zinc-400 py-12">
+              No projects added yet. Add some from the Admin Panel!
+            </div>
+          )}
         </div>
       </div>
     </section>

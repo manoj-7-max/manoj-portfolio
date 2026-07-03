@@ -10,6 +10,8 @@ import { Mail, Phone, MapPin, Send, MessageSquare } from "lucide-react";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { toast } from "sonner";
 
+import { createMessage } from "@/actions/messageActions";
+
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -17,15 +19,29 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    toast.success("Message sent successfully!", {
-      description: "I'll get back to you as soon as possible.",
-    });
-    
-    setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
+    try {
+      const form = e.target as HTMLFormElement;
+      const firstName = (form.elements.namedItem("firstName") as HTMLInputElement).value;
+      const lastName = (form.elements.namedItem("lastName") as HTMLInputElement).value;
+      const email = (form.elements.namedItem("email") as HTMLInputElement).value;
+      const message = (form.elements.namedItem("message") as HTMLTextAreaElement).value;
+
+      await createMessage({
+        name: `${firstName} ${lastName}`.trim(),
+        email,
+        message,
+      });
+      
+      toast.success("Message sent successfully!", {
+        description: "I'll get back to you as soon as possible.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -128,23 +144,24 @@ export function Contact() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="firstName" className="text-sm font-medium text-zinc-300">First Name</label>
-                      <Input id="firstName" required className="bg-black/20 border-white/10 focus-visible:ring-primary" placeholder="John" />
+                      <Input id="firstName" name="firstName" required className="bg-black/20 border-white/10 focus-visible:ring-primary" placeholder="John" />
                     </div>
                     <div className="space-y-2">
                       <label htmlFor="lastName" className="text-sm font-medium text-zinc-300">Last Name</label>
-                      <Input id="lastName" required className="bg-black/20 border-white/10 focus-visible:ring-primary" placeholder="Doe" />
+                      <Input id="lastName" name="lastName" required className="bg-black/20 border-white/10 focus-visible:ring-primary" placeholder="Doe" />
                     </div>
                   </div>
                   
                   <div className="space-y-2">
                     <label htmlFor="email" className="text-sm font-medium text-zinc-300">Email Address</label>
-                    <Input id="email" type="email" required className="bg-black/20 border-white/10 focus-visible:ring-primary" placeholder="john@example.com" />
+                    <Input id="email" name="email" type="email" required className="bg-black/20 border-white/10 focus-visible:ring-primary" placeholder="john@example.com" />
                   </div>
                   
                   <div className="space-y-2">
                     <label htmlFor="message" className="text-sm font-medium text-zinc-300">Your Message</label>
                     <Textarea 
-                      id="message" 
+                      id="message"
+                      name="message"
                       required 
                       className="bg-black/20 border-white/10 focus-visible:ring-primary min-h-[150px] resize-none" 
                       placeholder="Tell me about your project..." 

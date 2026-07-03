@@ -4,30 +4,6 @@ import React from "react";
 import { motion, Variants } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 
-const skillCategories = [
-  {
-    title: "Frontend",
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "HTML", "CSS", "JavaScript"],
-  },
-  {
-    title: "Backend",
-    skills: ["Node.js", "Express", "MongoDB", "Firebase", "Supabase", "REST APIs"],
-  },
-  {
-    title: "AI",
-    skills: ["OpenAI", "Gemini", "Claude", "Prompt Engineering", "AI Automation", "LLM Integration"],
-  },
-  {
-    title: "Cloud & DevOps",
-    skills: ["Vercel", "Firebase Hosting", "MongoDB Atlas", "Docker", "GitHub"],
-  },
-  {
-    title: "Design",
-    skills: ["Figma", "Canva", "Photoshop"],
-  },
-];
-
-
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
@@ -43,7 +19,21 @@ const itemVariants: Variants = {
   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } },
 };
 
-export function Skills() {
+export function Skills({ skills = [] }: { skills?: any[] }) {
+  // Group flat skills by category
+  const groupedSkills = skills.reduce((acc: any, skill: any) => {
+    if (!acc[skill.category]) {
+      acc[skill.category] = [];
+    }
+    acc[skill.category].push(skill.name);
+    return acc;
+  }, {});
+
+  const skillCategories = Object.keys(groupedSkills).map(category => ({
+    title: category,
+    skills: groupedSkills[category]
+  }));
+
   return (
     <section id="skills" className="relative py-24 md:py-32 bg-black/40">
       <div className="container mx-auto px-4 md:px-6">
