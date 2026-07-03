@@ -47,21 +47,21 @@ export function Experience({ experiences = [] }: { experiences?: any[] }) {
                     <div className={`flex flex-col md:flex-row items-start md:items-center justify-between gap-2 mb-4 ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
                       <h3 className="text-xl font-bold text-white flex items-center gap-2">
                         <Briefcase className="w-5 h-5 text-primary hidden md:block" />
-                        {exp.role}
+                        {exp.title}
                       </h3>
                       <div className="flex items-center gap-2 text-sm text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
                         <Calendar className="w-3 h-3" />
-                        <span>{exp.period}</span>
+                        <span>{exp.startDate} - {exp.endDate}</span>
                       </div>
                     </div>
                     
                     <h4 className="text-lg font-medium text-zinc-300 mb-4">{exp.company}</h4>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                    <p className="text-muted-foreground mb-6 leading-relaxed whitespace-pre-line">
                       {exp.description}
                     </p>
                     
                     <ul className={`space-y-2 ${index % 2 !== 0 ? "md:inline-block md:text-right" : ""}`}>
-                      {exp.highlights.map((highlight, i) => (
+                      {(exp.highlights || []).map((highlight: string, i: number) => (
                         <li key={i} className={`flex items-start gap-2 text-sm text-zinc-400 ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
                           <ChevronRight className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                           <span>{highlight}</span>

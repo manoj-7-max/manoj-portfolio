@@ -123,7 +123,7 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
               <div>
                 <h4 className="text-sm font-semibold text-zinc-300 mb-2 uppercase tracking-wider text-xs">Core Features</h4>
                 <div className="flex flex-wrap gap-2">
-                  {project.features.map((feature: string) => (
+                  {(project.features || []).map((feature: string) => (
                     <span key={feature} className="px-2 py-1 text-xs font-medium bg-white/5 text-zinc-400 rounded-md border border-white/5">
                       {feature}
                     </span>
@@ -134,7 +134,7 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
               <div>
                 <h4 className="text-sm font-semibold text-zinc-300 mb-2 uppercase tracking-wider text-xs">Tech Stack</h4>
                 <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech: string) => (
+                  {(project.tech || []).map((tech: string) => (
                     <span key={tech} className="text-xs font-semibold text-primary">
                       {tech}
                     </span>

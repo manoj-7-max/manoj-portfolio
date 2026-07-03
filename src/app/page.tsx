@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+export const dynamic = 'force-dynamic';
 import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";

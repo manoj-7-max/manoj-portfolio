@@ -72,7 +72,7 @@ export function Skills({ skills = [] }: { skills?: any[] }) {
                     viewport={{ once: true }}
                     className="flex flex-wrap gap-2"
                   >
-                    {category.skills.map((skill) => (
+                    {category.skills.map((skill: string) => (
                       <motion.span
                         key={skill}
                         variants={itemVariants}
