@@ -14,7 +14,7 @@ import { getSkills } from "@/actions/skillActions";
 import { getExperiences } from "@/actions/experienceActions";
 import { getTestimonials } from "@/actions/testimonialActions";
 import { getCertificates } from "@/actions/certificateActions";
-import { getBlogPosts } from "@/actions/blogActions";
+import { getBlogs } from "@/actions/blogActions";
 
 export default async function Home() {
   const projects = await getProjects();
@@ -22,7 +22,7 @@ export default async function Home() {
   const experiences = await getExperiences();
   const testimonials = await getTestimonials();
   const certificates = await getCertificates();
-  const blogPosts = await getBlogPosts();
+  const blogPosts = await getBlogs();
 
   return (
     <div className="flex flex-col gap-0 w-full overflow-hidden">
