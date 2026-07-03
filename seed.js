@@ -20,8 +20,8 @@ const ProjectSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const SkillSchema = new mongoose.Schema({
-  title: String,
-  skills: [String],
+  category: String,
+  name: String,
   order: Number,
 }, { timestamps: true });
 
