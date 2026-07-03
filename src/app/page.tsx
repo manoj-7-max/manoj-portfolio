@@ -12,11 +12,17 @@ import { Contact } from "@/components/Contact";
 import { getProjects } from "@/actions/projectActions";
 import { getSkills } from "@/actions/skillActions";
 import { getExperiences } from "@/actions/experienceActions";
+import { getTestimonials } from "@/actions/testimonialActions";
+import { getCertificates } from "@/actions/certificateActions";
+import { getBlogPosts } from "@/actions/blogActions";
 
 export default async function Home() {
   const projects = await getProjects();
   const skills = await getSkills();
   const experiences = await getExperiences();
+  const testimonials = await getTestimonials();
+  const certificates = await getCertificates();
+  const blogPosts = await getBlogPosts();
 
   return (
     <div className="flex flex-col gap-0 w-full overflow-hidden">
@@ -26,9 +32,9 @@ export default async function Home() {
       <Projects projects={projects} />
       <Experience experiences={experiences} />
       <Services />
-      <Testimonials />
-      <Certificates />
-      <Blog />
+      <Testimonials testimonials={testimonials} />
+      <Certificates certificates={certificates} />
+      <Blog posts={blogPosts} />
       <Contact />
     </div>
   );

@@ -6,6 +6,8 @@ const BlogSchema = new mongoose.Schema({
   excerpt: { type: String, required: true },
   content: { type: String, required: true }, // Markdown or HTML content
   coverImage: { type: String },
+  category: { type: String, default: "General" },
+  readTime: { type: String, default: "5 min read" },
   published: { type: Boolean, default: false },
 }, { timestamps: true });
 
