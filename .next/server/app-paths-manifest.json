@@ -1,19 +1,4 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/api/messages/route": "app/api/messages/route.js",
-  "/api/projects/route": "app/api/projects/route.js",
-  "/api/skills/route": "app/api/skills/route.js",
-  "/robots.txt/route": "app/robots.txt/route.js",
-  "/sitemap.xml/route": "app/sitemap.xml/route.js",
-  "/page": "app/page.js",
-  "/admin/blog/page": "app/admin/blog/page.js",
-  "/admin/experience/page": "app/admin/experience/page.js",
-  "/admin/login/page": "app/admin/login/page.js",
-  "/admin/messages/page": "app/admin/messages/page.js",
-  "/admin/projects/page": "app/admin/projects/page.js",
-  "/admin/page": "app/admin/page.js",
-  "/admin/certificates/page": "app/admin/certificates/page.js",
-  "/admin/skills/page": "app/admin/skills/page.js",
-  "/admin/testimonials/page": "app/admin/testimonials/page.js"
+  "/page": "app/page.js"
 }
